@@ -10,24 +10,77 @@ if not config_status_ok then
 	return
 end
 
+local icons = require("user.icons")
+
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
 nvim_tree.setup({
+	hijack_directories = {
+		enable = false,
+	},
 	ignore_ft_on_setup = {
 		"startify",
 		"dashboard",
 		"alpha",
 	},
-	open_on_tab = false,
-	hijack_cursor = false,
 	update_cwd = true,
+	renderer = {
+		add_trailing = false,
+		group_empty = false,
+		highlight_git = false,
+		highlight_opened_files = "none",
+		root_folder_modifier = ":t",
+		indent_markers = {
+			enable = false,
+			icons = {
+				corner = "└ ",
+				edge = "│ ",
+				none = "  ",
+			},
+		},
+		icons = {
+			webdev_colors = true,
+			git_placement = "before",
+			padding = " ",
+			symlink_arrow = " ➛ ",
+			show = {
+				file = true,
+				folder = true,
+				folder_arrow = true,
+				git = true,
+			},
+			glyphs = {
+				default = "",
+				symlink = "",
+				folder = {
+					arrow_open = icons.ui.ArrowOpen,
+					arrow_closed = icons.ui.ArrowClosed,
+					default = "",
+					open = "",
+					empty = "",
+					empty_open = "",
+					symlink = "",
+					symlink_open = "",
+				},
+				git = {
+					unstaged = "",
+					staged = "S",
+					unmerged = "",
+					renamed = "➜",
+					untracked = "U",
+					deleted = "",
+					ignored = "◌",
+				},
+			},
+		},
+	},
 	diagnostics = {
 		enable = true,
 		icons = {
-			hint = "",
-			info = "",
-			warning = "",
-			error = "",
+			hint = icons.diagnostics.Hint,
+			info = icons.diagnostics.Information,
+			warning = icons.diagnostics.Warning,
+			error = icons.diagnostics.Error,
 		},
 	},
 	update_focused_file = {
@@ -36,8 +89,7 @@ nvim_tree.setup({
 		ignore_list = {},
 	},
 	filters = {
-		dotfiles = false,
-		custom = {},
+		custom = { ".git" },
 		exclude = { ".vscode" },
 	},
 	git = {

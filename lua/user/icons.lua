@@ -2,25 +2,33 @@
 -- go to the above and then enter <c-v>u<unicode> and the symbold should appear
 -- or go here and upload the font file: https://mathew-kurian.github.io/CharacterMap/
 -- find more here: https://www.nerdfonts.com/cheat-sheet
-if vim.fn.has "mac" == 1 then
+vim.g.use_nerd_icons = false
+if vim.fn.has "mac" == 1 or vim.g.use_nerd_icons then
   -- elseif vim.fn.has "mac" == 1 then
   return {
     kind = {
       Text = "",
-      Method = "m",
-      Function = "",
-      Constructor = "",
+      -- Method = "m",
+      -- Function = "",
+      -- Constructor = "",
+      Method = "",
+      Function = "",
+      Constructor = "",
       Field = "",
-      Variable = "",
+      -- Variable = "",
+      Variable = "",
       Class = "",
       Interface = "",
-      Module = "",
+      -- Module = "",
+      Module = "",
       Property = "",
       Unit = "",
       Value = "",
       Enum = "",
-      Keyword = "",
-      Snippet = "",
+      -- Keyword = "",
+      Keyword = "",
+      -- Snippet = "",
+      Snippet = "",
       Color = "",
       File = "",
       Reference = "",
@@ -53,8 +61,11 @@ if vim.fn.has "mac" == 1 then
       Rename = "",
       Diff = "",
       Repo = "",
+      Octoface = "",
     },
     ui = {
+      ArrowClosed = "",
+      ArrowOpen = "",
       Lock = "",
       Circle = "",
       BigCircle = "",
@@ -74,14 +85,17 @@ if vim.fn.has "mac" == 1 then
       Package = "",
       List = "",
       SignIn = "",
+      SignOut = "",
       Check = "",
       Fire = "",
       Note = "",
       BookMark = "",
       Pencil = "",
-      ChevronRight = "",
+      -- ChevronRight = "",
+      ChevronRight = ">",
       Table = "",
       Calendar = "",
+      CloudDownload = "",
     },
     diagnostics = {
       Error = "",
@@ -95,6 +109,7 @@ if vim.fn.has "mac" == 1 then
       Squirrel = "",
       Tag = "",
       Watch = "",
+      Smiley = "ﲃ"
     },
   }
 else
@@ -149,8 +164,11 @@ else
       Rename = " ",
       Diff = " ",
       Repo = " ",
+      Octoface = " "
     },
     ui = {
+      ArrowClosed = "",
+      ArrowOpen = "",
       Lock = " ",
       Circle = " ",
       BigCircle = " ",
@@ -170,6 +188,8 @@ else
       Package = " ",
       List = " ",
       SignIn = " ",
+      SignOut = " ",
+      NoteBook = " ",
       Check = " ",
       Fire = " ",
       Note = " ",
@@ -178,6 +198,7 @@ else
       ChevronRight = "",
       Table = " ",
       Calendar = " ",
+      CloudDownload = " ",
     },
     diagnostics = {
       Error = " ",
@@ -191,6 +212,7 @@ else
       Squirrel = " ",
       Tag = " ",
       Watch = " ",
+      Smiley = " "
     },
   }
 end

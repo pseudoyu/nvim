@@ -6,7 +6,7 @@ end
 local M = {}
 
 require("dap-go").setup()
-require("dap.ext.vscode").load_launchjs()
+-- require("dap.ext.vscode").load_launchjs()
 
 vim.highlight.create("DapBreakpoint", { ctermbg = 0, guifg = "#993939", guibg = "#31353f" }, false)
 vim.highlight.create("DapLogPoint", { ctermbg = 0, guifg = "#61afef", guibg = "#31353f" }, false)

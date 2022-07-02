@@ -39,6 +39,7 @@ packer.init({
 })
 
 -- Install your plugins here
+
 return packer.startup(function(use)
 	-- My plugins here
 	use("wbthomason/packer.nvim") -- Have packer manage itself
@@ -78,7 +79,6 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-cmdline") -- cmdline completions
 	use("hrsh7th/cmp-nvim-lsp") -- lsp completions
 	use("hrsh7th/cmp-emoji") -- emoji completions
-	use("hrsh7th/cmp-copilot") -- github copilot completions
 	use("saadparwaiz1/cmp_luasnip") -- snippet completions
 
 	-- snippets
@@ -88,15 +88,32 @@ return packer.startup(function(use)
 	-- LSP
 	use("neovim/nvim-lspconfig") -- enable LSP
 	use("williamboman/nvim-lsp-installer") -- simple to use language server installer
-	use("tamago324/nlsp-settings.nvim") -- language server settings defined in json for
+	use("simrat39/symbols-outline.nvim")
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
 	use("ray-x/lsp_signature.nvim")
-	use("github/copilot.vim") -- ai completions
 	use("RRethy/vim-illuminate")
 	use({
 		"folke/trouble.nvim",
 		cmd = "TroubleToggle",
 	})
+	-- use("github/copilot.vim") -- ai completions
+
+	use({
+		"zbirenbaum/copilot.lua",
+		event = { "VimEnter" },
+		config = function()
+			vim.defer_fn(function()
+				require("user.copilot")
+			end, 100)
+		end,
+	})
+	use({
+		"zbirenbaum/copilot-cmp",
+		module = "copilot_cmp",
+	})
+
+	-- Rust
+	use("simrat39/rust-tools.nvim")
 
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
@@ -109,6 +126,7 @@ return packer.startup(function(use)
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
 	})
+	use("nvim-treesitter/playground")
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 
 	-- Git
@@ -116,11 +134,11 @@ return packer.startup(function(use)
 	use("f-person/git-blame.nvim")
 
 	-- DAP
-	use("mfussenegger/nvim-dap")
-	use("theHamsta/nvim-dap-virtual-text")
-	use("rcarriga/nvim-dap-ui")
-	use("Pocco81/DAPInstall.nvim")
-	use("leoluz/nvim-dap-go")
+	-- use("mfussenegger/nvim-dap")
+	-- use("theHamsta/nvim-dap-virtual-text")
+	-- use("rcarriga/nvim-dap-ui")
+	-- use("Pocco81/DAPInstall.nvim")
+	-- use("leoluz/nvim-dap-go")
 
 	-- Lua
 	use("nanotee/luv-vimdocs")

@@ -117,4 +117,9 @@ nvim_tree.setup({
 		cmd = "trash",
 		require_confirm = true,
 	},
+	actions = {
+		open_file = {
+			resize_window = false,
+		},
+	},
 })

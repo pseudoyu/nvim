@@ -11,7 +11,7 @@ copilot.setup {
   panel = { -- no config options yet
     enabled = true,
   },
-  ft_disable = { "markdown" },
+  ft_disable = { "markdown", "dap-repl" },
   -- plugin_manager_path = vim.fn.stdpath "data" .. "/site/pack/packer",
   -- server_opts_overrides = {},
 }

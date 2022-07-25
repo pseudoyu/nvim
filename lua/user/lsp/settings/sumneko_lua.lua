@@ -1,9 +1,14 @@
 return {
 	settings = {
-
 		Lua = {
 			diagnostics = {
 				globals = { "vim" },
+			},
+			format = {
+				enable = false,
+			},
+			telemetry = {
+				enable = false,
 			},
 			workspace = {
 				library = {

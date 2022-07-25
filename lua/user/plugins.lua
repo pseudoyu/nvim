@@ -79,6 +79,7 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-cmdline") -- cmdline completions
 	use("hrsh7th/cmp-nvim-lsp") -- lsp completions
 	use("hrsh7th/cmp-emoji") -- emoji completions
+	use("hrsh7th/cmp-nvim-lsp-signature-help") -- lsp signature completions
 	use("saadparwaiz1/cmp_luasnip") -- snippet completions
 
 	-- snippets
@@ -90,12 +91,15 @@ return packer.startup(function(use)
 	use("williamboman/nvim-lsp-installer") -- simple to use language server installer
 	use("simrat39/symbols-outline.nvim")
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
-	use("ray-x/lsp_signature.nvim")
 	use("RRethy/vim-illuminate")
 	use({
 		"folke/trouble.nvim",
 		cmd = "TroubleToggle",
 	})
+    use {
+    "SmiteshP/nvim-navic",
+    requires = "neovim/nvim-lspconfig",
+  }
 	-- use("github/copilot.vim") -- ai completions
 
 	use({
@@ -134,11 +138,11 @@ return packer.startup(function(use)
 	use("f-person/git-blame.nvim")
 
 	-- DAP
-	-- use("mfussenegger/nvim-dap")
-	-- use("theHamsta/nvim-dap-virtual-text")
-	-- use("rcarriga/nvim-dap-ui")
-	-- use("Pocco81/DAPInstall.nvim")
-	-- use("leoluz/nvim-dap-go")
+	use("mfussenegger/nvim-dap")
+	use("theHamsta/nvim-dap-virtual-text")
+	use("rcarriga/nvim-dap-ui")
+	use("Pocco81/DAPInstall.nvim")
+	use("leoluz/nvim-dap-go")
 
 	-- Lua
 	use("nanotee/luv-vimdocs")

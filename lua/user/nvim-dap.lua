@@ -6,7 +6,7 @@ end
 local M = {}
 
 require("dap-go").setup()
--- require("dap.ext.vscode").load_launchjs()
+require("dap.ext.vscode").load_launchjs()
 
 vim.highlight.create("DapBreakpoint", { ctermbg = 0, guifg = "#993939", guibg = "#31353f" }, false)
 vim.highlight.create("DapLogPoint", { ctermbg = 0, guifg = "#61afef", guibg = "#31353f" }, false)
@@ -75,18 +75,11 @@ end
 dap.listeners.before.event_terminated["dapui_config"] = function()
 	unbind()
 	dapui.close()
+	dap.repl.close()
 end
 dap.listeners.before.event_exited["dapui_config"] = function()
 	unbind()
 	dapui.close()
-end
-require("dap").listeners.before["event_initialized"]["custom"] = function(_, _)
-	keybind()
-	require("dapui").open()
-end
-require("dap").listeners.before["event_terminated"]["custom"] = function(_, _)
-	unbind()
-	require("dapui").close()
 end
 
 dapui.setup({
@@ -99,6 +92,7 @@ dapui.setup({
 		edit = "e",
 		repl = "r",
 	},
+	expand_lines = vim.fn.has("nvim-0.7"),
 	layouts = {
 		{
 			-- You can change the order of elements in the layout
@@ -162,6 +156,12 @@ function M.debug_config()
 	local contents = vim.fn.split(default_launch_json, "\n")
 	vim.fn.writefile(contents, resolved_path)
 	vim.cmd("e " .. resolved_path)
+end
+
+function M.terminate()
+  dap.terminate()
+	unbind()
+	dapui.close()
 end
 
 vim.cmd([[ command! DebugConfig execute 'lua require("user.nvim-dap").debug_config()']])

@@ -6,11 +6,11 @@ end
 local M = {}
 
 require("dap-go").setup()
-require("dap.ext.vscode").load_launchjs()
+--require("dap.ext.vscode").load_launchjs()
 
-vim.highlight.create("DapBreakpoint", { ctermbg = 0, guifg = "#993939", guibg = "#31353f" }, false)
-vim.highlight.create("DapLogPoint", { ctermbg = 0, guifg = "#61afef", guibg = "#31353f" }, false)
-vim.highlight.create("DapStopped", { ctermbg = 0, guifg = "#98c379", guibg = "#31353f" }, false)
+vim.api.nvim_set_hl(0, "DapBreakpoint", { ctermbg = 0, fg = "#993939", bg = "#31353f" })
+vim.api.nvim_set_hl(0, "DapLogPoint", { ctermbg = 0, fg = "#61afef", bg = "#31353f" })
+vim.api.nvim_set_hl(0, "DapStopped", { ctermbg = 0, fg = "#98c379", bg = "#31353f" })
 
 vim.fn.sign_define(
 	"DapBreakpoint",
@@ -159,7 +159,7 @@ function M.debug_config()
 end
 
 function M.terminate()
-  dap.terminate()
+	dap.terminate()
 	unbind()
 	dapui.close()
 end

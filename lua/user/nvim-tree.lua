@@ -89,7 +89,7 @@ nvim_tree.setup({
 		ignore_list = {},
 	},
 	filters = {
-		custom = { ".git" },
+		custom = { "^.git$" },
 		exclude = { ".vscode" },
 	},
 	git = {
@@ -99,7 +99,6 @@ nvim_tree.setup({
 	},
 	view = {
 		width = 30,
-		height = 30,
 		hide_root_folder = false,
 		side = "left",
 		mappings = {

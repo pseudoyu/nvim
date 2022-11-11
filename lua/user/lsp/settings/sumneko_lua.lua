@@ -4,12 +4,6 @@ return {
 			diagnostics = {
 				globals = { "vim" },
 			},
-			format = {
-				enable = false,
-			},
-			telemetry = {
-				enable = false,
-			},
 			workspace = {
 				library = {
 					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
